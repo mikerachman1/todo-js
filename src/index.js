@@ -1,6 +1,9 @@
 import './style.css';
 
-import taskBuilder from './task'
+import taskBuilder from './taskBuilder';
+import projectBuilder from './projectBuilder';
 
 console.log('hello world')
-console.log(taskBuilder(1, 'task1', 'first task', 1202023, 1));
+const task1 = taskBuilder(1, 'task1', 'first task', 1202023, 1);
+task1.completed = true;
+console.log(task1)
