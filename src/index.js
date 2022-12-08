@@ -5,7 +5,7 @@ import taskBuilder from './taskBuilder';
 import projectBuilder from './projectBuilder';
 
 import generateHeader from './header';
-import generateNewTaskModal from './newTaskModel';
+import generateNewTaskModal from './newTaskModal';
 
 //on first page load, create and set current project
 let projectCounter = 0;
@@ -18,7 +18,6 @@ generateHeader(currentProject);
 generateNewTaskModal();
 
 const newTaskForm = document.querySelector('#new-task');
-
 newTaskForm.addEventListener("submit", 
   function(event) {
     event.preventDefault();
@@ -28,8 +27,8 @@ newTaskForm.addEventListener("submit",
     const newDueDate = event.currentTarget.dueDate.value;
     const newPriority = event.currentTarget.priority.value;
 
-    console.log(newTitle);
-    console.log(newDescription);
-    console.log(newDueDate);
-    console.log(newPriority);
+    const newTask = taskBuilder(newTitle, newDescription, newDueDate, newPriority);
+    currentProject.addTask(newTask);
+
+    console.log(currentProject.getTasks());
   })
