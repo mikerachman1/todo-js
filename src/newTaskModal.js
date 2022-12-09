@@ -1,4 +1,8 @@
-export default function generateNewTaskModal() {
+import generateBody from './body';
+import { parseISO } from 'date-fns';
+import taskBuilder from './taskBuilder';
+
+export default function generateNewTaskModal(currentProject) {
   const contentDiv = document.getElementById("content");
 
   const formDiv = document.createElement('div');
@@ -27,4 +31,19 @@ export default function generateNewTaskModal() {
   formDiv.innerHTML = str;
 
   contentDiv.appendChild(formDiv);
+
+  const newTaskForm = document.querySelector('#new-task');
+  newTaskForm.addEventListener("submit", 
+  function(event) {
+    event.preventDefault();
+
+    const newTitle = event.currentTarget.title.value;
+    const newDescription = event.currentTarget.description.value;
+    const newDueDate = parseISO(event.currentTarget.dueDate.value);
+    const newPriority = event.currentTarget.priority.value;
+
+    const newTask = taskBuilder(newTitle, newDescription, newDueDate, newPriority);
+    currentProject.addTask(newTask);
+    generateBody(currentProject)
+  })
 }

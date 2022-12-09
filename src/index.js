@@ -16,22 +16,7 @@ projects.push(projectBuilder(projectCounter++, 'My First Project'));
 currentProject = projects[0];
 
 generateHeader(currentProject);
-generateNewTaskModal();
-
-const newTaskForm = document.querySelector('#new-task');
-newTaskForm.addEventListener("submit", 
-  function(event) {
-    event.preventDefault();
-
-    const newTitle = event.currentTarget.title.value;
-    const newDescription = event.currentTarget.description.value;
-    const newDueDate = parseISO(event.currentTarget.dueDate.value);
-    const newPriority = event.currentTarget.priority.value;
-
-    const newTask = taskBuilder(newTitle, newDescription, newDueDate, newPriority);
-    currentProject.addTask(newTask);
-    generateBody(currentProject)
-  })
+generateNewTaskModal(currentProject);
 
 const contentDiv = document.getElementById("content");
 const tasksDiv = document.createElement("div");
