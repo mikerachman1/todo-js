@@ -23,11 +23,11 @@ const tasksDiv = document.createElement("div");
 tasksDiv.id = 'tasks'
 contentDiv.appendChild(tasksDiv)
 
-const task1 = taskBuilder('task 1', 'do it', new Date('December 17, 2022 03:24:00'), 'high')
-const task2 = taskBuilder('task 2', 'do it', new Date('December 17, 2022 03:24:00'), 'moderate')
-const task3 = taskBuilder('task 3', 'do it', new Date('December 17, 2022 03:24:00'), 'low')
+const task1 = taskBuilder(currentProject.getCounter(), 'task 1', 'do it', new Date('December 17, 2022 03:24:00'), 'high')
 currentProject.addTask(task1)
+const task2 = taskBuilder(currentProject.getCounter(), 'task 2', 'do it', new Date('December 17, 2022 03:24:00'), 'moderate')
 currentProject.addTask(task2)
+const task3 = taskBuilder(currentProject.getCounter(), 'task 3', 'do it', new Date('December 17, 2022 03:24:00'), 'low')
 currentProject.addTask(task3)
 
 

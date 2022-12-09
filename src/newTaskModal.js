@@ -42,8 +42,9 @@ export default function generateNewTaskModal(currentProject) {
     const newDueDate = parseISO(event.currentTarget.dueDate.value);
     const newPriority = event.currentTarget.priority.value;
 
-    const newTask = taskBuilder(newTitle, newDescription, newDueDate, newPriority);
+    const newTask = taskBuilder(currentProject.getCounter(), newTitle, newDescription, newDueDate, newPriority);
     currentProject.addTask(newTask);
     generateBody(currentProject)
+
   })
 }
