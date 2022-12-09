@@ -1,5 +1,5 @@
 import './style.css';
-import { format } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 
 import taskBuilder from './taskBuilder';
 import projectBuilder from './projectBuilder';
@@ -25,7 +25,7 @@ newTaskForm.addEventListener("submit",
 
     const newTitle = event.currentTarget.title.value;
     const newDescription = event.currentTarget.description.value;
-    const newDueDate = event.currentTarget.dueDate.value;
+    const newDueDate = parseISO(event.currentTarget.dueDate.value);
     const newPriority = event.currentTarget.priority.value;
 
     const newTask = taskBuilder(newTitle, newDescription, newDueDate, newPriority);
@@ -38,9 +38,9 @@ const tasksDiv = document.createElement("div");
 tasksDiv.id = 'tasks'
 contentDiv.appendChild(tasksDiv)
 
-const task1 = taskBuilder('task 1', 'do it', 'mon', 'high')
-const task2 = taskBuilder('task 2', 'do it', 'tue', 'moderate')
-const task3 = taskBuilder('task 3', 'do it', 'wed', 'low')
+const task1 = taskBuilder('task 1', 'do it', new Date('December 17, 2022 03:24:00'), 'high')
+const task2 = taskBuilder('task 2', 'do it', new Date('December 17, 2022 03:24:00'), 'moderate')
+const task3 = taskBuilder('task 3', 'do it', new Date('December 17, 2022 03:24:00'), 'low')
 currentProject.addTask(task1)
 currentProject.addTask(task2)
 currentProject.addTask(task3)
