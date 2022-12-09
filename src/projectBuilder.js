@@ -34,7 +34,11 @@ const projectBuilder = (id, name, tasks = {}) => {
     return id;
   }
 
-  return {addTask, getTasks, getName, setName, getCounter, setCounter, getId}
+  const deleteTask = (taskId) => {
+    delete tasks[taskId]
+  }
+
+  return {addTask, getTasks, getName, setName, getCounter, setCounter, getId, deleteTask}
 }
 
 export default projectBuilder;

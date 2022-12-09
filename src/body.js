@@ -39,7 +39,8 @@ export default function generateBody(currentProject) {
     const taskDiv = document.querySelector(`.task-${task.id}`)
     deleteButton.addEventListener('click', function() {
       taskDiv.style.display = 'none'
-      //somehow delete task 
+      currentProject.deleteTask(task.id)
+      // console.log(currentProject.getTasks())
     })
 
     const editButton = document.querySelector(`.task-edit-${task.id}`)
