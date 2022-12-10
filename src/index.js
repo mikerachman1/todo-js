@@ -19,9 +19,9 @@ generateHeader(currentProject);
 generateNewTaskModal(currentProject);
 
 const contentDiv = document.getElementById("content");
-const tasksDiv = document.createElement("div");
-tasksDiv.id = 'tasks'
-contentDiv.appendChild(tasksDiv)
+const bodyDiv = document.createElement("div");
+bodyDiv.id = 'body'
+contentDiv.appendChild(bodyDiv)
 
 const task1 = taskBuilder(currentProject.getCounter(), 'task 1', 'do it', new Date('December 17, 2022 03:24:00'), 'high')
 currentProject.addTask(task1)

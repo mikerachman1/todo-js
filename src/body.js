@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 
 export default function generateBody(currentProject) {
-  const tasksDiv = document.getElementById("tasks");
+  const bodyDiv = document.getElementById("body");
 
   let str = '';
 
@@ -19,7 +19,7 @@ export default function generateBody(currentProject) {
             </div>`
     })
 
-  tasksDiv.innerHTML = str;
+  bodyDiv.innerHTML = str;
 
   
   Object.values(tasks).forEach((task) => {
