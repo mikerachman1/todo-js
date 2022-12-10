@@ -1,6 +1,6 @@
-/* body {
+body {
   margin: 0;
-} */
+}
 
 h1 {
   color: red;
@@ -12,16 +12,14 @@ h1 {
   align-items: center;
   justify-content: space-evenly;
   background-color: #f5f5fa;
+  grid-area: header;
 }
 
-/* .sidebar {
+.sidebar {
   background-color: #cacfff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100%;
-} */
+  grid-area: sidebar;
+  height: 100vh;
+}
 
 .overlay {
   visibility: hidden;
@@ -42,6 +40,7 @@ h1 {
   justify-content: center;
   align-items: center;
   z-index: 101;
+  top: 25%;
 }
 
 #new-task {
@@ -54,4 +53,17 @@ h1 {
   position: relative;
   left: -50%;
   width: 250px;
+}
+
+#body {
+  grid-area: body;
+}
+
+#content {
+  display: grid;
+  /* gap: 20px; */
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+    "header header"
+    "sidebar body";
 }

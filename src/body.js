@@ -35,7 +35,7 @@ export default function generateBody(currentProject) {
         task.completed = false;
         taskDetails.innerHTML = `${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
       }
-      console.log(`${task.id}-${task.completed}`)
+      // console.log(`${task.id}-${task.completed}`)
     })
 
     const deleteButton = document.querySelector(`.task-delete-${task.id}`)
