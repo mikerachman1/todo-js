@@ -7,6 +7,7 @@ import projectBuilder from './projectBuilder';
 import generateHeader from './header';
 import generateNewTaskModal from './newTaskModal';
 import generateBody from './body';
+import generateSidebar from './sidebar';
 
 //on first page load, create and set current project
 let projectCounter = 0;
@@ -32,7 +33,7 @@ currentProject.addTask(task2)
 const task3 = taskBuilder(currentProject.getCounter(), 'task 3', 'do it', new Date('December 17, 2022 03:24:00'), 'low')
 currentProject.addTask(task3)
 
-
-generateBody(currentProject)
+generateSidebar(projects, currentProject);
+generateBody(currentProject);
 
 
