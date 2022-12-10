@@ -41,8 +41,9 @@ export default function generateNewTaskModal(currentProject) {
   const headerDiv = document.querySelector('.header')
   headerDiv.appendChild(openFormBtn);
   
-  contentDiv.appendChild(overlayDiv);
-  contentDiv.appendChild(formDiv);
+  const htmlBody = document.body;
+  htmlBody.appendChild(overlayDiv);
+  htmlBody.appendChild(formDiv);
 
   const newTaskForm = document.querySelector('#new-task');
   newTaskForm.addEventListener("submit", 

@@ -1,6 +1,6 @@
-body {
-  /* margin: 0; */
-}
+/* body {
+  margin: 0;
+} */
 
 h1 {
   color: red;
@@ -13,6 +13,15 @@ h1 {
   justify-content: space-evenly;
   background-color: #f5f5fa;
 }
+
+/* .sidebar {
+  background-color: #cacfff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+} */
 
 .overlay {
   visibility: hidden;
