@@ -5,7 +5,15 @@ import taskBuilder from './taskBuilder';
 export default function generateNewTaskModal(currentProject) {
   const contentDiv = document.getElementById("content");
 
+  const overlayDiv = document.createElement('div');
+  overlayDiv.classList.add("overlay")
+
   const formDiv = document.createElement('div');
+  formDiv.classList.add("new-task-div")
+
+  const openFormBtn = document.createElement('button');
+  openFormBtn.classList.add('open-new-task-button')
+  openFormBtn.innerHTML = 'Add New Task';
 
   const str = `<form id="new-task">
                 <h3>New Task</h3>
@@ -30,6 +38,8 @@ export default function generateNewTaskModal(currentProject) {
 
   formDiv.innerHTML = str;
 
+  contentDiv.appendChild(openFormBtn);
+  contentDiv.appendChild(overlayDiv);
   contentDiv.appendChild(formDiv);
 
   const newTaskForm = document.querySelector('#new-task');
@@ -45,6 +55,17 @@ export default function generateNewTaskModal(currentProject) {
     const newTask = taskBuilder(currentProject.getCounter(), newTitle, newDescription, newDueDate, newPriority);
     currentProject.addTask(newTask);
     generateBody(currentProject)
+    formDiv.style.visibility = 'hidden';
+    overlayDiv.style.visibility = 'hidden';
+  })
 
+  openFormBtn.addEventListener("click", function() {
+    formDiv.style.visibility = 'visible';
+    overlayDiv.style.visibility = 'visible';
+  })
+
+  overlayDiv.addEventListener("click", function() {
+    formDiv.style.visibility = 'hidden';
+    overlayDiv.style.visibility = 'hidden';
   })
 }
