@@ -1,6 +1,9 @@
 export default function generateHeader(currentProject) {
   const contentDiv = document.getElementById("content");
 
+  const headerDiv = document.createElement('div');
+  headerDiv.classList.add('header')
+
   const todoH1 = document.createElement('h1');
   todoH1.innerHTML = 'ToDo!';
 
@@ -8,6 +11,8 @@ export default function generateHeader(currentProject) {
   projectName.innerHTML = currentProject.getName();
   projectName.dataset.project = currentProject.getId();
 
-  contentDiv.appendChild(todoH1);
-  contentDiv.appendChild(projectName);
+  headerDiv.appendChild(todoH1);
+  headerDiv.appendChild(projectName);
+
+  contentDiv.appendChild(headerDiv);
 }

@@ -1,5 +1,17 @@
+body {
+  /* margin: 0; */
+}
+
 h1 {
   color: red;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #f5f5fa;
 }
 
 .overlay {

@@ -38,7 +38,9 @@ export default function generateNewTaskModal(currentProject) {
 
   formDiv.innerHTML = str;
 
-  contentDiv.appendChild(openFormBtn);
+  const headerDiv = document.querySelector('.header')
+  headerDiv.appendChild(openFormBtn);
+  
   contentDiv.appendChild(overlayDiv);
   contentDiv.appendChild(formDiv);
 
