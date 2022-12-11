@@ -10,6 +10,7 @@ export default function generateHeader(currentProject) {
   const projectName = document.createElement('h2');
   projectName.innerHTML = currentProject.getName();
   projectName.dataset.project = currentProject.getId();
+  projectName.classList.add('header-project-name');
 
   headerDiv.appendChild(todoH1);
   headerDiv.appendChild(projectName);

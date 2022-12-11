@@ -2,7 +2,7 @@ import generateBody from './body';
 import { parseISO } from 'date-fns';
 import taskBuilder from './taskBuilder';
 
-export default function generateNewTaskModal(currentProject) {
+function generateNewTaskModal(currentProject) {
   const contentDiv = document.getElementById("content");
 
   const overlayDiv = document.createElement('div');
@@ -72,3 +72,15 @@ export default function generateNewTaskModal(currentProject) {
     overlayDiv.style.visibility = 'hidden';
   })
 }
+
+function removeNewTaskModal() {
+  const overlayDiv = document.querySelector('.overlay');
+  const formDiv = document.querySelector('.new-task-div');
+  const openFormBtn = document.querySelector('.open-new-task-button');
+
+  overlayDiv.remove();
+  formDiv.remove();
+  openFormBtn.remove();
+}
+
+export {generateNewTaskModal, removeNewTaskModal}

@@ -1,3 +1,6 @@
+import generateBody from './body';
+import {generateNewTaskModal, removeNewTaskModal} from './newTaskModal';
+
 export default function generateSidebar(projects, currentProject) {
   const contentDiv = document.getElementById("content");
 
@@ -11,6 +14,14 @@ export default function generateSidebar(projects, currentProject) {
     projectDiv.setAttribute('id', `project-${project.getId()}`);
     projectDiv.innerHTML = project.getName();
     sidebarDiv.appendChild(projectDiv);
+
+    projectDiv.addEventListener('click', function() {
+      generateBody(project)
+      const headerProjectNameDiv = document.querySelector('.header-project-name')
+      headerProjectNameDiv.innerHTML = project.getName();
+      removeNewTaskModal();
+      generateNewTaskModal(project)
+    })
   });
 
   contentDiv.appendChild(sidebarDiv);

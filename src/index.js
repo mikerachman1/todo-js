@@ -5,7 +5,7 @@ import taskBuilder from './taskBuilder';
 import projectBuilder from './projectBuilder';
 
 import generateHeader from './header';
-import generateNewTaskModal from './newTaskModal';
+import {generateNewTaskModal} from './newTaskModal';
 import generateBody from './body';
 import generateSidebar from './sidebar';
 
