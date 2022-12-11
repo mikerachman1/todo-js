@@ -8,13 +8,13 @@ export default function generateSidebar(projects, projectCounter) {
   const sidebarDiv = document.createElement('div');
   sidebarDiv.classList.add('sidebar');
 
-  //fill sidebar innerhtml with projects, new project button
+ 
   const addProjectButton = document.createElement('button');
   addProjectButton.classList.add('add-project');
   addProjectButton.innerHTML = 'Add New Project'
   sidebarDiv.appendChild(addProjectButton);
 
-  //wrap in function and call when new project is created
+  
   const projectsContainer = document.createElement('div');
   projectsContainer.classList.add('projects-container')
 

@@ -25,6 +25,15 @@ export default function generateBody(currentProject) {
   Object.values(tasks).forEach((task) => {
     const checkBox = document.querySelector(`.task-checkbox-${task.id}`)
     const taskDetails = document.querySelector(`.task-details-${task.id}`)
+
+    if(task.completed) {
+      checkBox.checked = true;
+      taskDetails.innerHTML = `<strike>${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>`
+    } else {
+      checkBox.checked = false;
+      taskDetails.innerHTML = `${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
+    }
+
     checkBox.addEventListener('click', function() {
       if (task.completed == false) {
         checkBox.checked = true;
@@ -85,7 +94,8 @@ export default function generateBody(currentProject) {
           task.priority = newPriority;
 
           
-          taskDetails.innerHTML = `${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
+          
+          (task.completed) ? taskDetails.innerHTML = `<strike>${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>` : taskDetails.innerHTML = `${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
           taskButtons.style.display = 'inline'
         })
     })
