@@ -9,7 +9,7 @@ export default function generateBody(currentProject) {
 
   Object.values(tasks).forEach((task) => {
 
-    str +=  `<div class='task-${task.id}'>
+    str +=  `<div class='task-${task.id} task'>
               <span class='task-details-${task.id}'>${task.title} - ${task.description} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</span>
               <span class='task-buttons-${task.id}'>  
                 <input type="checkbox" class='task-checkbox-${task.id}'>
