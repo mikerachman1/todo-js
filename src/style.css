@@ -26,6 +26,13 @@ h1 {
   gap: 1rem;
 }
 
+.sidebar div {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 8px;
+}
+
 .overlay {
   visibility: hidden;
   background-color: #0000009f;
