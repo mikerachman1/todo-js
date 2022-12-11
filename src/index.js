@@ -38,9 +38,9 @@ const secondProject = projectBuilder(projectCounter++, 'Second Project')
 projects.push(secondProject);
 secondProject.addTask(taskBuilder(secondProject.getCounter(), 'TASK1', 'DOIT', new Date('December 18, 2022 03:24:00'), 'high'))
 secondProject.addTask(taskBuilder(secondProject.getCounter(), 'TASK2', 'DOIT', new Date('December 19, 2022 03:24:00'), 'high'))
-// currentProject = secondProject
+// console.log(projectCounter)
 
-generateSidebar(projects, currentProject);
+generateSidebar(projects, projectCounter);
 generateBody(currentProject);
 
 
