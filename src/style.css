@@ -19,6 +19,11 @@ h1 {
   background-color: #cacfff;
   grid-area: sidebar;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  gap: 1rem;
 }
 
 .overlay {
