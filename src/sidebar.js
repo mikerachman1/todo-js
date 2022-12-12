@@ -65,7 +65,7 @@ export default function generateSidebar(projects, projectCounter) {
           buttonDiv.style.display = 'none';
         })
         buttonGroup.style.display = 'block'
-        generateBody(project)
+        generateBody(projects, project)
         const headerProjectNameDiv = document.querySelector('.header-project-name')
         headerProjectNameDiv.innerHTML = project.getName();
         removeNewTaskModal();

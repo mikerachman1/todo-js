@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns';
+import saveToLocalStorage from './localStorage';
 
-export default function generateBody(currentProject) {
+export default function generateBody(projects, currentProject) {
   const bodyDiv = document.getElementById("body");
 
   let str = '';

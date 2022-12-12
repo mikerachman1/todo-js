@@ -10,10 +10,19 @@ import generateSidebar from './sidebar';
 
 //on first page load, create and set current project
 let projectCounter = 0;
-let projects = [];
+let projects = JSON.parse(localStorage.getItem('projects') || '[]');
 let currentProject;
-projects.push(projectBuilder(projectCounter++, 'My First Project'));
-currentProject = projects[0];
+if (projects.length == 0) {
+  projects.push(projectBuilder(projectCounter++, 'My First Project'));
+  currentProject = projects[0];
+} else {
+  projects = projects.map(proj => {
+    let newProj = projectBuilder(projectCounter++, proj.getName(), proj.getTasks())
+    newProj.setCounter(proj.counter)
+    return newProj
+  })
+  currentProject = projects[JSON.parse(localStorage.getItem('currentProject'))]
+}
 
 generateHeader(currentProject);
 generateNewTaskModal(currentProject);
@@ -40,6 +49,6 @@ secondProject.addTask(taskBuilder(secondProject.getCounter(), 'TASK2', 'DOIT', n
 // console.log(projectCounter)
 
 generateSidebar(projects, projectCounter);
-generateBody(currentProject);
+generateBody(projects, currentProject);
 
 
