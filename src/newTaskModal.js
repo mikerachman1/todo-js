@@ -1,8 +1,10 @@
 import generateBody from './body';
 import { parseISO } from 'date-fns';
 import taskBuilder from './taskBuilder';
+import saveToLocalStorage from './localStorage';
 
-function generateNewTaskModal(currentProject) {
+
+function generateNewTaskModal(projects, currentProject) {
   const contentDiv = document.getElementById("content");
 
   const overlayDiv = document.createElement('div');
@@ -54,12 +56,13 @@ function generateNewTaskModal(currentProject) {
     const newDescription = event.currentTarget.description.value;
     const newDueDate = parseISO(event.currentTarget.dueDate.value);
     const newPriority = event.currentTarget.priority.value;
-
+    console.log(currentProject.getCounter())
     const newTask = taskBuilder(currentProject.getCounter(), newTitle, newDescription, newDueDate, newPriority);
     currentProject.addTask(newTask);
-    generateBody(currentProject)
+    generateBody(projects, currentProject)
     formDiv.style.visibility = 'hidden';
     overlayDiv.style.visibility = 'hidden';
+    saveToLocalStorage(projects, currentProject)
   })
 
   openFormBtn.addEventListener("click", function() {

@@ -69,7 +69,7 @@ export default function generateSidebar(projects, projectCounter) {
         const headerProjectNameDiv = document.querySelector('.header-project-name')
         headerProjectNameDiv.innerHTML = project.getName();
         removeNewTaskModal();
-        generateNewTaskModal(project)
+        generateNewTaskModal(projects, project)
       })
       
       deleteButton.addEventListener('click', function() {

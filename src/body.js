@@ -76,6 +76,7 @@ export default function generateBody(projects, currentProject) {
         task.completed = false;
         taskTitle.innerHTML = `${task.title}`
       }
+      saveToLocalStorage(projects, currentProject)
     })
 
     
