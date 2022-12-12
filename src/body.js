@@ -21,9 +21,6 @@ export default function generateBody(currentProject) {
               </div>
             </div>`
 
-    //add event listener to task-details to expand to show buttons
-    
-    
     })
 
   bodyDiv.innerHTML = str;
@@ -111,7 +108,6 @@ export default function generateBody(currentProject) {
           task.dueDate = newDueDate;
           task.priority = newPriority;
 
-          
            //change task div here
           (task.completed) ? taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>` : taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
           taskButtons.style.display = 'inline'
