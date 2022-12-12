@@ -135,6 +135,7 @@ export default function generateBody(projects, currentProject) {
 
           taskMain.style.display = 'flex'
           editFormContainer.remove();
+          saveToLocalStorage(projects, currentProject)
         })
     })
   })
