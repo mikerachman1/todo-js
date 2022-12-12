@@ -18,6 +18,8 @@ export default function generateSidebar(projects, projectCounter) {
   const projectsContainer = document.createElement('div');
   projectsContainer.classList.add('projects-container')
 
+  const allButtons = [];
+
   function populateProjects() {
     projectsContainer.innerHTML = '';
     projects.forEach(project => {
@@ -30,27 +32,47 @@ export default function generateSidebar(projects, projectCounter) {
       projectName.innerHTML = project.getName();
 
       const projectButtons = document.createElement('div')
-      projectButtons.classList.add('project-buttons')
+      projectButtons.classList.add('project-buttons', `project-buttons-${project.getId()}`)
       projectButtons.innerHTML = `<button class="project-edit-${project.getId()}">Edit</button>
                                   <button class="project-delete-${project.getId()}">Delete</button>`
+      projectButtons.style.display = 'none'
+      allButtons.push(projectButtons);
       
       projectDiv.appendChild(projectName)
       projectDiv.appendChild(projectButtons)
 
-
       projectsContainer.appendChild(projectDiv);
+      
+    });
+    sidebarDiv.appendChild(projectsContainer);
+  }
+  populateProjects();
 
+
+  contentDiv.appendChild(sidebarDiv);
+
+  function addProjectEventListeners() {
+    projects.forEach(project => {
+      const projectName = document.querySelector(`#project-${project.getId()}`)
       projectName.addEventListener('click', function() {
+        const buttonGroup = document.querySelector(`.project-buttons-${project.getId()}`)
+
+        allButtons.forEach(buttonDiv => {
+          buttonDiv.style.display = 'none';
+        })
+        buttonGroup.style.display = 'block'
         generateBody(project)
         const headerProjectNameDiv = document.querySelector('.header-project-name')
         headerProjectNameDiv.innerHTML = project.getName();
         removeNewTaskModal();
         generateNewTaskModal(project)
       })
-    });
-    sidebarDiv.appendChild(projectsContainer);
+
+      //add edit and delete event listners
+    })
   }
-  populateProjects();
+
+  addProjectEventListeners();
 
   addProjectButton.addEventListener('click', function() {
     const newProjectDiv = document.createElement('div');
@@ -73,8 +95,8 @@ export default function generateSidebar(projects, projectCounter) {
       projects.push(newProjectObj);
       populateProjects();
       newProjectDiv.remove();
+      addProjectEventListeners();
     })
   })
-  
-  contentDiv.appendChild(sidebarDiv);
+
 }
