@@ -108,6 +108,7 @@ export default function generateSidebar(projects, currentProject, projectCounter
           projectName.style.display = 'block'
           headerProjectNameDiv.innerHTML = project.getName();
           editFormContainer.remove()
+          saveToLocalStorage(projects, currentProject)
         })
       })
     })
