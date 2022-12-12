@@ -1,8 +1,10 @@
 import generateBody from './body';
 import {generateNewTaskModal, removeNewTaskModal} from './newTaskModal';
 import projectBuilder from './projectBuilder';
+import saveToLocalStorage from './localStorage';
 
-export default function generateSidebar(projects, projectCounter) {
+
+export default function generateSidebar(projects, currentProject, projectCounter) {
   const contentDiv = document.getElementById("content");
 
   const sidebarDiv = document.createElement('div');
@@ -134,6 +136,7 @@ export default function generateSidebar(projects, projectCounter) {
       populateProjects();
       newProjectDiv.remove();
       addProjectEventListeners();
+      saveToLocalStorage(projects, currentProject)
     })
   })
 

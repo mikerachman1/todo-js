@@ -48,7 +48,7 @@ contentDiv.appendChild(bodyDiv)
 // secondProject.addTask(taskBuilder(secondProject.getCounter(), 'TASK2', 'DOIT', new Date('December 19, 2022 03:24:00'), 'high'))
 // // console.log(projectCounter)
 
-generateSidebar(projects, projectCounter);
+generateSidebar(projects, currentProject, projectCounter);
 generateBody(projects, currentProject);
 
 
