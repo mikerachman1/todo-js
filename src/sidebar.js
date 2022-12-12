@@ -54,8 +54,13 @@ export default function generateSidebar(projects, projectCounter) {
   function addProjectEventListeners() {
     projects.forEach(project => {
       const projectName = document.querySelector(`#project-${project.getId()}`)
+      const buttonGroup = document.querySelector(`.project-buttons-${project.getId()}`)
+      const editButton = document.querySelector(`.project-edit-${project.getId()}`)
+      const deleteButton = document.querySelector(`.project-delete-${project.getId()}`)
+      const projectDiv = document.querySelector(`.project-${project.getId()}`)
+      const headerProjectNameDiv = document.querySelector('.header-project-name')
+      
       projectName.addEventListener('click', function() {
-        const buttonGroup = document.querySelector(`.project-buttons-${project.getId()}`)
         allButtons.forEach(buttonDiv => {
           buttonDiv.style.display = 'none';
         })
@@ -66,21 +71,41 @@ export default function generateSidebar(projects, projectCounter) {
         removeNewTaskModal();
         generateNewTaskModal(project)
       })
-
-      const editButton = document.querySelector(`.project-edit-${project.getId()}`)
-      const deleteButton = document.querySelector(`.project-delete-${project.getId()}`)
-      const projectDiv = document.querySelector(`.project-${project.getId()}`)
       
       deleteButton.addEventListener('click', function() {
         const text = `Are you sure you want to delete ${project.getName()}?`
         if (confirm(text)) {
           projectDiv.remove()
           projects.splice(project.getId(), 1);
-          const headerProjectNameDiv = document.querySelector('.header-project-name')
+          
           headerProjectNameDiv.innerHTML = '';
           const bodyDiv = document.querySelector('#body')
           bodyDiv.innerHTML = '';
         }
+      })
+
+      editButton.addEventListener('click', function() {
+        const editFormContainer = document.createElement('div')
+        projectDiv.appendChild(editFormContainer)
+        editFormContainer.innerHTML = `<form id=edit-project-${project.getId()}>
+                                  <label for='projectName'>
+                                    <input type="text" name="projectName" id="projectName" value="${project.getName()}">
+                                  </label>
+                                  <input type="submit" value="Submit">
+                                </form>`
+        buttonGroup.style.display = 'none'
+        projectName.style.display = 'none'
+
+        const editProjectForm = document.querySelector(`#edit-project-${project.getId()}`)
+        editProjectForm.addEventListener("submit", function(event) {
+          event.preventDefault();
+          const newName = event.currentTarget.projectName.value;
+          project.setName(newName)
+          projectName.innerHTML = project.getName()
+          projectName.style.display = 'block'
+          headerProjectNameDiv.innerHTML = project.getName();
+          editFormContainer.remove()
+        })
       })
     })
   }
