@@ -83,6 +83,7 @@ export default function generateBody(projects, currentProject) {
     deleteButton.addEventListener('click', function() {
       taskDiv.style.display = 'none'
       currentProject.deleteTask(task.id)
+      saveToLocalStorage(projects, currentProject)
     })
 
     const editButton = document.querySelector(`.task-edit-${task.id}`)
