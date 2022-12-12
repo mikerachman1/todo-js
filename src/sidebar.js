@@ -24,7 +24,7 @@ export default function generateSidebar(projects, projectCounter) {
     projectsContainer.innerHTML = '';
     projects.forEach(project => {
       const projectDiv = document.createElement('div')
-      projectDiv.classList.add('project');
+      projectDiv.classList.add('project', `project-${project.getId()}`);
 
       const projectName = document.createElement('div');
       projectName.setAttribute('id', `project-${project.getId()}`);
@@ -56,7 +56,6 @@ export default function generateSidebar(projects, projectCounter) {
       const projectName = document.querySelector(`#project-${project.getId()}`)
       projectName.addEventListener('click', function() {
         const buttonGroup = document.querySelector(`.project-buttons-${project.getId()}`)
-
         allButtons.forEach(buttonDiv => {
           buttonDiv.style.display = 'none';
         })
@@ -68,7 +67,21 @@ export default function generateSidebar(projects, projectCounter) {
         generateNewTaskModal(project)
       })
 
-      //add edit and delete event listners
+      const editButton = document.querySelector(`.project-edit-${project.getId()}`)
+      const deleteButton = document.querySelector(`.project-delete-${project.getId()}`)
+      const projectDiv = document.querySelector(`.project-${project.getId()}`)
+      
+      deleteButton.addEventListener('click', function() {
+        const text = `Are you sure you want to delete ${project.getName()}?`
+        if (confirm(text)) {
+          projectDiv.remove()
+          projects.splice(project.getId(), 1);
+          const headerProjectNameDiv = document.querySelector('.header-project-name')
+          headerProjectNameDiv.innerHTML = '';
+          const bodyDiv = document.querySelector('#body')
+          bodyDiv.innerHTML = '';
+        }
+      })
     })
   }
 
