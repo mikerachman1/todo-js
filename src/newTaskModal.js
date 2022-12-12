@@ -56,7 +56,7 @@ function generateNewTaskModal(projects, currentProject) {
     const newDescription = event.currentTarget.description.value;
     const newDueDate = parseISO(event.currentTarget.dueDate.value);
     const newPriority = event.currentTarget.priority.value;
-    console.log(currentProject.getCounter())
+    
     const newTask = taskBuilder(currentProject.getCounter(), newTitle, newDescription, newDueDate, newPriority);
     currentProject.addTask(newTask);
     generateBody(projects, currentProject)

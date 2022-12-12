@@ -52,3 +52,4 @@ generateSidebar(projects, currentProject, projectCounter);
 generateBody(projects, currentProject);
 
 
+

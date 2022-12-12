@@ -8,8 +8,10 @@ export default function generateHeader(currentProject) {
   todoH1.innerHTML = 'ToDo!';
 
   const projectName = document.createElement('h2');
-  projectName.innerHTML = currentProject.getName();
-  projectName.dataset.project = currentProject.getId();
+  if (currentProject) {
+    projectName.innerHTML = currentProject.getName();
+    projectName.dataset.project = currentProject.getId();
+  }
   projectName.classList.add('header-project-name');
 
   headerDiv.appendChild(todoH1);

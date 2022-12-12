@@ -72,6 +72,8 @@ export default function generateSidebar(projects, currentProject, projectCounter
         headerProjectNameDiv.innerHTML = project.getName();
         removeNewTaskModal();
         generateNewTaskModal(projects, project)
+        currentProject = project
+        saveToLocalStorage(projects, currentProject)
       })
       
       deleteButton.addEventListener('click', function() {
