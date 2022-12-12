@@ -22,12 +22,25 @@ export default function generateSidebar(projects, projectCounter) {
     projectsContainer.innerHTML = '';
     projects.forEach(project => {
       const projectDiv = document.createElement('div')
-      projectDiv.setAttribute('id', `project-${project.getId()}`);
       projectDiv.classList.add('project');
-      projectDiv.innerHTML = project.getName();
+
+      const projectName = document.createElement('div');
+      projectName.setAttribute('id', `project-${project.getId()}`);
+      projectName.classList.add('project-name')
+      projectName.innerHTML = project.getName();
+
+      const projectButtons = document.createElement('div')
+      projectButtons.classList.add('project-buttons')
+      projectButtons.innerHTML = `<button class="project-edit-${project.getId()}">Edit</button>
+                                  <button class="project-delete-${project.getId()}">Delete</button>`
+      
+      projectDiv.appendChild(projectName)
+      projectDiv.appendChild(projectButtons)
+
+
       projectsContainer.appendChild(projectDiv);
 
-      projectDiv.addEventListener('click', function() {
+      projectName.addEventListener('click', function() {
         generateBody(project)
         const headerProjectNameDiv = document.querySelector('.header-project-name')
         headerProjectNameDiv.innerHTML = project.getName();

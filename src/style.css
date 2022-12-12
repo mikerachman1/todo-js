@@ -34,6 +34,10 @@ h1 {
   margin-bottom: 1rem
 }
 
+.project-name {
+  padding-bottom: 1rem;
+}
+
 .overlay {
   visibility: hidden;
   background-color: #0000009f;
