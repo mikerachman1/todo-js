@@ -10,8 +10,11 @@ export default function generateBody(currentProject) {
   Object.values(tasks).forEach((task) => {
      //change task div here
     str +=  `<div class='task-${task.id} task'>
-              <span class='task-details-${task.id}'>${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</span>
-              <input type="checkbox" class='task-checkbox-${task.id}'>
+              <div class="task-main">
+                <div class='priority-${task.id} priority'></div>
+                <span class='task-details-${task.id}'>${task.title} - ${format((task.dueDate), 'M/dd/yy')}</span>
+                <input type="checkbox" class='task-checkbox-${task.id}'>
+              </div>
               <div class="expanded-task-${task.id}">
                 <span class='task-description'>${task.description}</span>
                 <span class='task-buttons-${task.id}'>
@@ -32,6 +35,7 @@ export default function generateBody(currentProject) {
     const expandedTask = document.querySelector(`.expanded-task-${task.id}`)
     const deleteButton = document.querySelector(`.task-delete-${task.id}`)
     const taskDiv = document.querySelector(`.task-${task.id}`)
+    const priorityDiv = document.querySelector(`.priority-${task.id}`)
     
     expandedTask.style.display = 'none'
     taskDetails.addEventListener('click', function() {
@@ -41,11 +45,19 @@ export default function generateBody(currentProject) {
     if(task.completed) {
       checkBox.checked = true;
        //change task div here
-      taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>`
+      taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')}</strike>`
     } else {
       checkBox.checked = false;
        //change task div here
-      taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
+      taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')}`
+    }
+
+    if (task.priority == 'high') {
+      priorityDiv.style.backgroundColor = '#d4142a'
+    } else if (task.priority == 'moderate') {
+      priorityDiv.style.backgroundColor = '#e8600a'
+    } else {
+      priorityDiv.style.backgroundColor = '#06b66c'
     }
 
     checkBox.addEventListener('click', function() {
@@ -53,12 +65,12 @@ export default function generateBody(currentProject) {
         checkBox.checked = true;
         task.completed = true;
          //change task div here
-        taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>`
+        taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')}</strike>`
       } else {
         checkBox.checked = false;
         task.completed = false;
          //change task div here
-        taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
+        taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')}`
       }
       // console.log(`${task.id}-${task.completed}`)
     })
@@ -109,7 +121,7 @@ export default function generateBody(currentProject) {
           task.priority = newPriority;
 
            //change task div here
-          (task.completed) ? taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}</strike>` : taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')} - ${task.priority}`
+          (task.completed) ? taskDetails.innerHTML = `<strike>${task.title} - ${format((task.dueDate), 'M/dd/yy')}</strike>` : taskDetails.innerHTML = `${task.title} - ${format((task.dueDate), 'M/dd/yy')}`
           taskButtons.style.display = 'inline'
         })
     })
