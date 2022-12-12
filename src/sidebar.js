@@ -83,6 +83,7 @@ export default function generateSidebar(projects, currentProject, projectCounter
           headerProjectNameDiv.innerHTML = '';
           const bodyDiv = document.querySelector('#body')
           bodyDiv.innerHTML = '';
+          saveToLocalStorage(projects, currentProject)
         }
       })
 
