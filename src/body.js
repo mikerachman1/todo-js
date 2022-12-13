@@ -10,11 +10,9 @@ function createBody() {
 
 function generateBody(projects, currentProject) {
   const bodyDiv = document.getElementById("body");
-  
   let str = '';
-
   const tasks = currentProject.getTasks();
-
+  //populate tasks
   Object.values(tasks).forEach((task) => {
     str +=  `<div class='task-${task.id} task'>
               <div class="task-main-${task.id} task-main">
@@ -36,7 +34,7 @@ function generateBody(projects, currentProject) {
     })
 
   bodyDiv.innerHTML = str;
-
+  //add event listners to tasks
   Object.values(tasks).forEach((task) => {
     const checkBox = document.querySelector(`.task-checkbox-${task.id}`)
     const taskTitle = document.querySelector(`.task-title-${task.id}`)
@@ -86,7 +84,6 @@ function generateBody(projects, currentProject) {
       saveToLocalStorage(projects, currentProject)
     })
 
-    
     deleteButton.addEventListener('click', function() {
       taskDiv.style.display = 'none'
       currentProject.deleteTask(task.id)
@@ -125,21 +122,15 @@ function generateBody(projects, currentProject) {
         function(event) {
           event.preventDefault();
 
-          const newTitle = event.currentTarget.title.value;
-          const newDescription = event.currentTarget.description.value;
-          const newDueDate = parseISO(event.currentTarget.dueDate.value);
-          const newPriority = event.currentTarget.priority.value;
-
-          task.title = newTitle;
-          task.description = newDescription;
-          task.dueDate = newDueDate;
-          task.priority = newPriority;
+          task.title = event.currentTarget.title.value;
+          task.description = event.currentTarget.description.value;
+          task.dueDate = parseISO(event.currentTarget.dueDate.value);
+          task.priority = event.currentTarget.priority.value;
 
           (task.completed) ? taskTitle.innerHTML = `<strike>${task.title}</strike>` : taskTitle.innerHTML = `${task.title}`
           taskDate.innerHTML = `${format((task.dueDate), 'M/dd/yy')}`;
-          taskDescription.innerHTML = newDescription;
+          taskDescription.innerHTML = task.description;
           priorityColorChange();
-
           taskMain.style.display = 'flex'
           editFormContainer.remove();
           saveToLocalStorage(projects, currentProject)
