@@ -1,5 +1,5 @@
-import generateBody from './body';
-import {generateNewTaskModal, removeNewTaskModal} from './newTaskModal';
+import { generateBody } from './body';
+import { generateNewTaskModal, removeNewTaskModal } from './newTaskModal';
 import projectBuilder from './projectBuilder';
 import saveToLocalStorage from './localStorage';
 

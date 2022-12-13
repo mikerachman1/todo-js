@@ -1,9 +1,16 @@
 import { format, parseISO } from 'date-fns';
 import saveToLocalStorage from './localStorage';
 
-export default function generateBody(projects, currentProject) {
-  const bodyDiv = document.getElementById("body");
+function createBody() {
+  const contentDiv = document.getElementById("content");
+  const bodyDiv = document.createElement("div");
+  bodyDiv.id = 'body'
+  contentDiv.appendChild(bodyDiv) 
+}
 
+function generateBody(projects, currentProject) {
+  const bodyDiv = document.getElementById("body");
+  
   let str = '';
 
   const tasks = currentProject.getTasks();
@@ -140,3 +147,5 @@ export default function generateBody(projects, currentProject) {
     })
   })
 }
+
+export { createBody, generateBody }

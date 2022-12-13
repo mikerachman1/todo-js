@@ -1,4 +1,4 @@
-import generateBody from './body';
+import { generateBody } from './body';
 import { parseISO } from 'date-fns';
 import taskBuilder from './taskBuilder';
 import saveToLocalStorage from './localStorage';

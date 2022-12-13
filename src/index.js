@@ -1,11 +1,9 @@
 import './style.css';
-
 import taskBuilder from './taskBuilder';
 import projectBuilder from './projectBuilder';
-
 import generateHeader from './header';
-import {generateNewTaskModal} from './newTaskModal';
-import generateBody from './body';
+import { generateNewTaskModal } from './newTaskModal';
+import { createBody, generateBody } from './body';
 import generateSidebar from './sidebar';
 
 //on first page load, create and set current project
@@ -28,12 +26,6 @@ if (projects.length == 0) {
 
 generateHeader(currentProject);
 generateNewTaskModal(projects, currentProject);
-
-//find way to move this into body.js
-const contentDiv = document.getElementById("content");
-const bodyDiv = document.createElement("div");
-bodyDiv.id = 'body'
-contentDiv.appendChild(bodyDiv)
-
+createBody();
 generateSidebar(projects, currentProject, projectCounter);
 generateBody(projects, currentProject);
