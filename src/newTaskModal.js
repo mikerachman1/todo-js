@@ -6,13 +6,10 @@ import saveToLocalStorage from './localStorage';
 
 function generateNewTaskModal(projects, currentProject) {
   const contentDiv = document.getElementById("content");
-
   const overlayDiv = document.createElement('div');
   overlayDiv.classList.add("overlay")
-
   const formDiv = document.createElement('div');
   formDiv.classList.add("new-task-div")
-
   const openFormBtn = document.createElement('button');
   openFormBtn.classList.add('open-new-task-button')
   openFormBtn.innerHTML = 'Add New Task';
@@ -42,12 +39,11 @@ function generateNewTaskModal(projects, currentProject) {
 
   const headerDiv = document.querySelector('.header')
   headerDiv.appendChild(openFormBtn);
-  
   const htmlBody = document.body;
   htmlBody.appendChild(overlayDiv);
   htmlBody.appendChild(formDiv);
-
   const newTaskForm = document.querySelector('#new-task');
+  
   newTaskForm.addEventListener("submit", 
   function(event) {
     event.preventDefault();
@@ -80,7 +76,6 @@ function removeNewTaskModal() {
   const overlayDiv = document.querySelector('.overlay');
   const formDiv = document.querySelector('.new-task-div');
   const openFormBtn = document.querySelector('.open-new-task-button');
-
   overlayDiv.remove();
   formDiv.remove();
   openFormBtn.remove();

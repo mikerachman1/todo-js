@@ -6,20 +6,14 @@ import saveToLocalStorage from './localStorage';
 
 export default function generateSidebar(projects, currentProject, projectCounter) {
   const contentDiv = document.getElementById("content");
-
   const sidebarDiv = document.createElement('div');
   sidebarDiv.classList.add('sidebar');
-
- 
   const addProjectButton = document.createElement('button');
   addProjectButton.classList.add('add-project');
   addProjectButton.innerHTML = 'Add New Project'
   sidebarDiv.appendChild(addProjectButton);
-
-  
   const projectsContainer = document.createElement('div');
   projectsContainer.classList.add('projects-container')
-
   const allButtons = [];
 
   function populateProjects() {
@@ -27,24 +21,19 @@ export default function generateSidebar(projects, currentProject, projectCounter
     projects.forEach(project => {
       const projectDiv = document.createElement('div')
       projectDiv.classList.add('project', `project-${project.getId()}`);
-
       const projectName = document.createElement('div');
       projectName.setAttribute('id', `project-${project.getId()}`);
       projectName.classList.add('project-name')
       projectName.innerHTML = project.getName();
-
       const projectButtons = document.createElement('div')
       projectButtons.classList.add('project-buttons', `project-buttons-${project.getId()}`)
       projectButtons.innerHTML = `<button class="project-edit-${project.getId()}">Edit</button>
                                   <button class="project-delete-${project.getId()}">Delete</button>`
       projectButtons.style.display = 'none'
       allButtons.push(projectButtons);
-      
       projectDiv.appendChild(projectName)
       projectDiv.appendChild(projectButtons)
-
       projectsContainer.appendChild(projectDiv);
-      
     });
     sidebarDiv.appendChild(projectsContainer);
   }
@@ -81,7 +70,6 @@ export default function generateSidebar(projects, currentProject, projectCounter
         if (confirm(text)) {
           projectDiv.remove()
           projects.splice(project.getId(), 1);
-          
           headerProjectNameDiv.innerHTML = '';
           const bodyDiv = document.querySelector('#body')
           bodyDiv.innerHTML = '';
