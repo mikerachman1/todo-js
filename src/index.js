@@ -15,6 +15,8 @@ let currentProject;
 if (projects.length == 0) {
   projects.push(projectBuilder(projectCounter++, 'My First Project'));
   currentProject = projects[0];
+  const task1 = taskBuilder(currentProject.getCounter(), 'Hello! Click me to Expand.', 'This is your first task! Have fun!', new Date('December 17, 2023 03:24:00'), 'high')
+  currentProject.addTask(task1)
 } else {
   projects = projects.map(proj => {
     let newProj = projectBuilder(projectCounter++, proj.name, proj.tasks)
