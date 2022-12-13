@@ -25,7 +25,7 @@ function generateBody(projects, currentProject) {
               </div>
               <div class="expanded-task-${task.id} expanded-task">
                 <span class='task-description-${task.id} task-description'>${task.description}</span>
-                <span class='task-buttons-${task.id}'>
+                <span class='task-buttons task-buttons-${task.id}'>
                   <button class='task-edit-${task.id}'>Edit</button>
                   <button class='task-delete-${task.id}'>Delete</button>
                 </span>

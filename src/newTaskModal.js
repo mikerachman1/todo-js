@@ -1,5 +1,5 @@
 import { generateBody } from './body';
-import { parseISO } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 import taskBuilder from './taskBuilder';
 import saveToLocalStorage from './localStorage';
 
@@ -12,7 +12,7 @@ function generateNewTaskModal(projects, currentProject) {
   formDiv.classList.add("new-task-div")
   const openFormBtn = document.createElement('button');
   openFormBtn.classList.add('open-new-task-button')
-  openFormBtn.innerHTML = 'Add New Task';
+  openFormBtn.innerHTML = '+ Add New Task +';
 
   const str = `<form id="new-task">
                 <h3>New Task</h3>
@@ -23,7 +23,7 @@ function generateNewTaskModal(projects, currentProject) {
                   <input type="text" name="description" id="description">
                 </label><br>
                 <label for="dueDate">Due-date
-                  <input type="date" name="dueDate" id="dueDate">
+                  <input type="date" name="dueDate" id="dueDate" value="${format((new Date()), "yyyy-MM-dd")}">
                 </label><br>
                 <label for="priority">Priority
                   <select name="priority" id="priority">

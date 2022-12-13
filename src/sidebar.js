@@ -10,7 +10,7 @@ export default function generateSidebar(projects, currentProject, projectCounter
   sidebarDiv.classList.add('sidebar');
   const addProjectButton = document.createElement('button');
   addProjectButton.classList.add('add-project');
-  addProjectButton.innerHTML = 'Add New Project'
+  addProjectButton.innerHTML = '+ Add New Project +'
   sidebarDiv.appendChild(addProjectButton);
   const projectsContainer = document.createElement('div');
   projectsContainer.classList.add('projects-container')
@@ -80,7 +80,7 @@ export default function generateSidebar(projects, currentProject, projectCounter
       editButton.addEventListener('click', function() {
         const editFormContainer = document.createElement('div')
         projectDiv.appendChild(editFormContainer)
-        editFormContainer.innerHTML = `<form id=edit-project-${project.getId()}>
+        editFormContainer.innerHTML = `<form class='edit-project' id=edit-project-${project.getId()}>
                                   <label for='projectName'>
                                     <input type="text" name="projectName" id="projectName" value="${project.getName()}">
                                   </label>
